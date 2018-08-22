@@ -1,0 +1,176 @@
+body {
+    background-color: transparent;
+    width: 840px;
+
+    header {
+        .invoice-info {
+            .bill-to-container {
+                width: 465px;
+            }
+        }
+    }
+}
+
+.work-items {
+    text-align: center;
+    display: block;
+
+
+    .activity-group {
+        display: inline-block;
+        text-align: left;
+        margin-top: 15px;
+
+        h3 {
+            margin: 5px 0px;
+        }
+
+        table {
+            margin: 0px auto;
+
+            tr {
+
+                td, th {
+                    width: 100px;
+                }
+
+                td.cl-wo, th.cl-wo {
+                    width: 200px;
+                }
+
+                .right-align {
+                    text-align: right;
+                }
+            }
+
+            tfoot {
+                td {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
+
+.grand-totals {
+    display: inline-block;
+    font-weight: bold;
+    text-align: right;
+    margin: 20px 10px 0px 0px;
+
+    span {
+        display: table-cell;
+        width: 200px;
+    }
+}
+
+.scors-work-orders {
+    text-align: center;
+    page-break-before: always;
+
+    .activity-group {
+
+        table {
+
+            tr {
+                td {
+                    padding: inherit;
+                }
+            }
+        }
+
+        .first {
+            padding-top: 5px !important;
+        }
+
+        .last {
+            padding-bottom: 5px !important;
+        }
+    }
+
+
+    h3 {
+        margin-left: 3px;
+        font-weight: bold;
+        color: #FF9332;
+        font-size: 16px;
+    }
+
+    table {
+        margin: 0px auto;
+        border-spacing: 0px;
+
+        tr {
+
+            td, th {
+                width: 100px;
+            }
+
+            td.cl-wo, th.cl-wo {
+                width: 200px;
+            }
+
+            .right-align {
+                text-align: right;
+            }
+        }
+
+        tfoot {
+            td {
+                font-weight: bold;
+            }
+        }
+    }
+
+    th {
+        background-color: #80C8D8;
+        padding: 10px 0px;
+        font-weight: bold;
+    }
+
+    th, td {
+        text-align: left;
+
+        &:first-child {
+            padding-left: 5px;
+        }
+
+        &:last-child {
+            padding-right: 5px;
+        }
+    }
+
+    tbody {
+        font-size: 11px;
+
+        .even {
+            background-color: #F2F2F2;
+        }
+
+        .odd {
+            background-color: white !important;
+        }
+
+        td {
+            padding: 5px 0px;
+        }
+    }
+
+    tfoot {
+        td {
+            padding: 20px 0px 30px;
+        }
+    }
+}
+
+thead {
+    display: table-header-group;
+}
+
+tfoot {
+    display: table-row-group;
+}
+
+tr {
+    page-break-inside: avoid;
+}

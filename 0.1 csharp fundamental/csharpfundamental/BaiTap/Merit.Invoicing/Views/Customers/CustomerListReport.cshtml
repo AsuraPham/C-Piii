@@ -1,0 +1,30 @@
+﻿@model IList<Merit.Components.Customers.ReadModel.Customer>
+
+@{
+    Layout = "~/Views/Layouts/CustomerListLayout.cshtml";
+}
+
+<div class="customer-list">
+    <table class="table table-condensed">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th style="width: 90px">Terms</th>
+            <th>Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@customer.Name</td>
+                <td>@(string.Join(", ", new [] { customer.Address.Line1, customer.Address.Line2, customer.Address.City, customer.Address.State, customer.Address.Zip }.Where(w=>!string.IsNullOrWhiteSpace(w))))</td>
+                <td>@customer.TermsString</td>
+                <td>@customer.ParsedEmail</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    <h4>Total Customer/Carrier: @Model.Count</h4>
+</div>

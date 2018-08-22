@@ -1,0 +1,110 @@
+﻿@model Merit.Components.Invoices.Domain.ReportModel.Selection.SelectionInvoiceModel
+@{
+    Layout = "~/Views/Layouts/InvoiceLayout.cshtml";
+    bool first;
+    var tables = new[]
+    {
+        new
+        {
+            Title = "Selection",
+            HasData = Model.DefaultWorkers.Any(),
+            Associates = Model.Associates,
+            Managers = Model.Managers,
+            TotalRegularHours = Model.TotalRegularHours,
+            TotalOvertimeHours = Model.TotalOvertimeHours,
+            TotalDoubleOvertimeHours = @Model.TotalDoubleOvertimeHours,
+            TotalAmount = Model.TotalAmount
+        },
+        new
+        {
+            Title = "Selection (trainer)",
+            HasData = Model.TrainerWorkers.Any(),
+            Associates = Model.TrainerAssociates,
+            Managers = Model.TrainerManagers,
+            TotalRegularHours = Model.TrainerTotalRegularHours,
+            TotalOvertimeHours = Model.TrainerTotalOvertimeHours,
+            TotalDoubleOvertimeHours = Model.TrainerTotalDoubleOvertimeHours,
+            TotalAmount = Model.TrainerTotalAmount
+        }
+    };
+}
+<link href="~/Content/Css/SelectionInvoice.css" rel="stylesheet" />
+<section class="work-items">
+    @foreach (var table in tables.Where(t => t.HasData))
+    {
+        <div class="table-wrapper">
+            <h3 style="margin-top: 30px;">@table.Title</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="cl-type"></th>
+                        <th class="cl-name">Name</th>
+                        <th class="cl-hours">Reg Hours</th>
+                        <th class="cl-rate">Reg Rate</th>
+                        <th class="cl-hours">OT Hours</th>
+                        <th class="cl-rate">OT Rate</th>
+                        <th class="cl-hours">DOT Hours</th>
+                        <th class="cl-rate">DOT Rate</th>
+                        <th class="cl-total">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ first = true; }
+                    @foreach (var w in table.Associates)
+                {
+                        <tr>
+                            <td class="cl-type"><b>@(first ? "Associates" : "") @{ first = false; }</b></td>
+                            <td class="cl-name">@w.LastName, @w.FirstName</td>
+                            <td class="cl-hours">@w.RegularHours.ToString("F")</td>
+                            <td class="cl-rate">@w.RegularRate.ToString("C")</td>
+                            <td class="cl-hours">@w.OvertimeHours.ToString("F")</td>
+                            <td class="cl-rate">@w.OvertimeRate.ToString("C")</td>
+                            <td class="cl-hours">@w.DoubleOvertimeHours.ToString("F")</td>
+                            <td class="cl-rate">@w.DoubleOvertimeRate.ToString("C")</td>
+                            <td class="cl-total">@w.TotalPay.ToString("C")</td>
+                        </tr>
+                                }
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    @{ first = true; }
+                    @foreach (var w in table.Managers)
+                {
+                        <tr>
+                            <td class="cl-type"><b>@(first ? "Managers" : "") @{ first = false; }</b></td>
+                            <td class="cl-name">@w.LastName, @w.FirstName (@w.WorkerType)</td>
+                            <td class="cl-hours">@w.RegularHours.ToString("F")</td>
+                            <td class="cl-rate">@w.RegularRate.ToString("C")</td>
+                            <td class="cl-hours">@w.OvertimeHours.ToString("F")</td>
+                            <td class="cl-rate">@w.OvertimeRate.ToString("C")</td>
+                            <td class="cl-hours">@w.DoubleOvertimeHours.ToString("F")</td>
+                            <td class="cl-rate">@w.DoubleOvertimeRate.ToString("C")</td>
+                            <td class="cl-total">@w.TotalPay.ToString("C")</td>
+                        </tr>
+                                }
+                </tbody>
+                <tfoot>
+                    <tr class="bold">
+                        <td></td>
+                        <td>Grand Total</td>
+                        <td>@table.TotalRegularHours.ToString("N")</td>
+                        <td></td>
+                        <td>@table.TotalOvertimeHours.ToString("N")</td>
+                        <td></td>
+                        <td>@table.TotalDoubleOvertimeHours.ToString("N")</td>
+                        <td></td>
+                        <td>@table.TotalAmount.ToString("C")</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+                                }
+</section>

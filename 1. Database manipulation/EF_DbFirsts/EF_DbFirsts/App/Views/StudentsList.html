@@ -1,0 +1,37 @@
+﻿<a href="#/AddStudent" class="btn btn-primary">Add New Employee</a>
+<br /><br />
+<div class="table-responsive">
+    <table id="mytable" class="table table-bordred table-striped">
+        <thead>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Address</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in ListStudents">
+                <td>{{item.StudentId}}</td>
+                <td>{{item.Name}}</td>
+                <td>{{item.Date|date:'yyyy-MM-dd'}}</td>
+                <td>{{item.Adress}}</td>
+                <td>{{item.Phone}}</td>
+                <td>{{item.Email}}</td>
+                <td>
+                    <a class="btn btn-primary btn-xs" href="#/EditStudent/{{item.StudentId}}">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </a>
+                </td>
+                <td>
+                    <a class="btn btn-danger btn-xs" href="#/DeleteStudent/{{item.StudentId}}">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

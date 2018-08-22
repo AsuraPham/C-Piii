@@ -1,0 +1,293 @@
+﻿@model Merit.Components.WorkOrders.Queries.Projections.BOLProjections
+
+<div class="container invoice-wh">
+<p style="font-size: 23px"><b>STRAIGHT BILL OF LADING-SHORT FROM - Original - Not Negotiable</b></p>
+    <div class="tableInvoice">
+        <div class="title-header">
+            <p style="float: left;" class="no-margin-p">CARRIER:</p>
+            <p style="float: left; margin-left: 100px;" class="no-margin-p">BO# @Model.WorkOrderNumber</p>
+            <p style="float: right; margin-right: 200px;" class="no-margin-p">COMPANY</p>
+        </div>
+        <div style="clear: both"></div>
+        <div class="row">
+            <div class="padding-col col-context-left">
+                <div class="invoice_Info">
+                    <div class="info-invoice-1" style="font-size: 13px;">
+                        <div style="padding-left: 3px;">
+                            <div style="clear: both;"></div>
+                            <p style="margin-bottom: 0; width: 100%;">
+                                <b>RECEIVED,</b>&nbsp;&nbsp; subject to the classifications and tariffs in effect on the date of the issue of this Bill of Lading.
+                            </p>
+                        </div>
+                        <div style="padding-left: 3px;">
+                            <p style="width: 100%;">
+                                <b>FROM</b>  &emsp;&emsp; <b>Merit Logistics</b> &emsp;&emsp; Pallet Yard  &emsp;&emsp; <b>@Model.Client @Model.PhoneNumber</b>
+                            </p>
+                        </div>
+                        <div style="padding-left: 3px; width: 100%">
+                            <p style="width: 100%;">
+                                <b>AT</b> &emsp;&emsp; STREET &nbsp; @Model.Street &emsp;&emsp;&emsp; DATE &nbsp; @Convert.ToDateTime(@Model.Date).ToString("MM/dd/yyyy HH:mm")
+                            </p>
+                        </div>
+                        <div style="padding-left: 3px; width: 100%">
+                            <p style="width: 100%;">
+                                &emsp;&emsp;&emsp;&nbsp; <span style="margin-left: 3px;">CITY</span> &nbsp; @Model.City &emsp;&emsp;&emsp; STATE &nbsp; @Model.State &emsp;&emsp;&emsp; ZIP &nbsp; @Model.Zip
+                            </p>
+                        </div>
+                    </div>
+                    <div class="info-invoice-2 border-bottom-info">
+                        <div style="clear: both; border-top: 2px solid #808080;">
+                            <p style="margin: 5px 5px 5px 5px;font-size: 8px; text-align: justify; line-height: 14px; ">
+                            The property described below, in apparent good order, except as noted (contents and conditions of contents of packages unknown), marked, consigned, and destined as indicated below, which said carrier (the word carrier being understood throughout this contract as meaning any person or corporation in possession of the property under the contract) agrees to carry to its usual place of delivery at said destination, if on its route, otherwise to deliver to another carrier on the route to to said destination. It is mutually agreed as to each carrier of all or any of said property over all or any portion of said route to destination, and as to each party at any time interested in all or any of said property, that every service to be performed hereunder shall be subject to all the terms and conditions of the Uniform Domestic Straight Bill of Lading set forth (1) in Official, Southern, Western and Illinois Freight Classifications in effect on the date hereof, if this is a rail or a rail-water shipment, or (2) in the applicable motor carrier classification or tariff if this is a motor carrier shipment.
+                                <br />&nbsp;&nbsp;&nbsp; Shipper hereby certifies that he is familiar with all the terms and conditions of the said bill of lading, including those on the back thereof, set forth in the classification or tariff which governs the transportation of this shipment, and the said terms and conditions are hereby agreed to by the shipper and accepted for himself and his assigns.
+                            <p>
+                        </div>
+                    </div>
+                    <div class="info-invoice-3 border-bottom-info">
+                        <div class="info-invoice-3-row">
+                            <p style="padding-top: 0;">CONSIGNEE</p>
+
+                        </div>
+                        <div class="info-invoice-3-row">
+                            <p>ADDRESS</p>
+                        </div>
+                        <div class="info-invoice-3-row">
+                            <p style="float: left; width: 40%;">DESTINATION</p>
+                            <p style="float: left; width: 20%;">STATE</p>
+                            <p style="float: left; width: 40%;">ZIP</p>
+                        </div>
+                        <div class="info-invoice-3-row">
+                            <p style="float: left; width: 30%;">ROUTE</p>
+                            <p style="float: left; width: 20%; padding-top: 0;">
+                                <span>CAR <br />INITIAL</span>
+                            </p>
+                            <p style="float: left; width: 20%; padding-top: 0;">
+                                <span>CAR <br /> NO.</span>
+                            </p>
+                            <p style="float: left; width: 30%;">SEAL'S</p>
+                        </div>
+
+                    </div>
+                    <div class="info-invoice-4 border-bottom-info">
+                        <table class="invoice-wh-list">
+                            <thead>
+                                <tr>
+                                    <th style="vertical-align: middle; width: 10%;">NO. PKGS.<br /></th>
+                                    <th style="vertical-align: middle; width: 63%;">DESCRIPTION OF ARTICLES, SPECIAL MARKS AND EXCEPTIONS <br /></th>
+                                    <th style="width: 12%;">WEIGHT <br /> (SUB. TO COR.)</th>
+                                    <th style="width: 10%">CLASS <br /> OR RATE</th>
+                                    <th style="width: 5%;">CK. <br /> COL.</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var pallet in Model.PalletGrade)
+                                {
+                                    <tr>
+                                        <td style="text-align: center">@pallet.Quantity</td>
+                                        <td><b>@pallet.TypeOfPallet</b></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                }
+                                @switch (Model.PalletGrade.Count())
+                                {
+                                    case 1:
+                                        for (var i = 0; i < 7; i++)
+                                        {
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        }
+                                        break;
+                                    case 2:
+                                        for (var i = 0; i < 6; i++)
+                                        {
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        }
+                                        break;
+                                    case 3:
+                                        for (var i = 0; i < 5; i++)
+                                        {
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        }
+                                        break;
+                                    case 4:
+                                        for (var i = 0; i < 4; i++)
+                                        {
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        }
+                                        break;
+                                    case 5:
+                                        for (var i = 0; i < 3; i++)
+                                        {
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        }
+                                        break;
+                                    case 6:
+                                        for (var i = 0; i < 2; i++)
+                                        {
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        }
+                                        break;
+                                    case 7:
+                                        for (var i = 0; i < 1; i++)
+                                        {
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        }
+                                        break;
+                                }
+                                <tr>
+                                    <td style="text-align: center; font-size: 10px; font-weight: bold;">TOTAL <br /> CARTONS</td>
+                                    <td rowspan="2" style="text-align: justify; font-size: 10px; text-transform: uppercase">
+                                        <p style="margin: 2px 5px 2px 5px"><b>Certification</b><br>
+                                            This is to certify that the above named materials are properly classified, described, packaged, marked and labeled, and are in proper condition for transportation according to the applicable regulations of the department of transportation.</p>                          
+                                    </td>
+                                    <td style="text-align: center; font-size: 10px; font-weight: bold;">TOTAL <br /> WEIGHT</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td style="text-align: center; font-size: 10px; font-weight: bold;">
+                                        TOTAL <br /> WEIGHT
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="info-invoice-4 border-bottom-info">
+                        @*<div style="width: 100%">
+                                <img src="~/Content/Images/imgTemplate.png" style="min-width: 100%; max-width: 100%;" class="img-responsive" />
+                            </div>*@
+                        <table class="shape">
+                            <thead>
+                                <tr>
+                                    <th style="text-align: center; width: 25%; background-color: #808080; color: #fff">ATTENTION<br />FREIGHT BILLER</th>
+                                    <th style="text-align: center; width: 25%; background-color: #ffffff; color:#585858">PLEASE SHOW THIS NUMBER<br />ON ALL FREIGHT BILLS.</th>
+                                    <th style="width: 10%;"><div id="triangle_right"></div></th>
+                                    <th style="width: 40%;"><span></span></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div style="border-bottom: 1px solid #808089;"> </div>
+                    <div class="info-invoice-5">
+                        <div class="container">
+                            <div class="info-footer">
+                                <p>Merit Logistics</p>
+                                <p>33332 Valle Road #100</p>
+                                <p>San Juan Capistrano, CA 92675</p>
+                                <p>t.(949) 481-0685</p>
+                            </div>
+                            <div class="">
+                                <p style="text-align: center; font-family: inherit, serif; font-size: 12px; font-weight:initial; margin-bottom: 0;">SHIPPER PER &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /</p>
+                                <hr class="info-hr" />
+                            </div>
+                            <div class="info-footer-1">
+                                <p style="float: left;">Permanent post-office address of shipper.</p>
+                                <p style="float: right; display: block; margin-right: 50px;">AGENT PER</p>
+                            </div>
+                            <div class="clear-fix" style="clear: both;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="padding-col col-context-right">
+                <div class="invoice_note">
+                    <div class="info-right-header border-bottom-info">
+                        <h5> --- AGENT'S NO.</h5>
+                    </div>
+                    <div class="info-right-body border-bottom-info">
+                        <p style="margin-bottom: 0;">&nbsp;&nbsp;&nbsp; Subject to Section 7 of conditions of applicable bill of lading. If this shipment is to be delivered to the consignee without recourse on the consignor, the consignor shall sign the following statement: </p>
+                        <p style="margin-bottom: 5px;">&nbsp;&nbsp;&nbsp; The Carrier shall not make delivery of this shipment without payment of freight and all other charges.</p>
+                        <p style="text-align: center; margin-top: 0;" class="no-margin-p">
+                            <br/> _____________________________
+                            <br/>(Signature of Consignor.)
+                        </p>
+                    </div>
+                    <div class="info-right-body border-bottom-info">
+                        <p style="margin-bottom: 5px;">&nbsp;&nbsp;&nbsp; It charges are to be prepaid, write or stamp here. "To be Prepaid."</p>
+                        <br/>
+                    </div>
+                    <div class="info-right-body border-bottom-info">
+                        <p style="" class="no-margin-p">Received $________________to apply prepayment of the charges on the property describe heron.</p>
+                        <br/>
+                        <hr class="info-hr" />
+                        <p style="text-align: center; margin-top: 0; margin-bottom: 10px;">Agent or Cashier.</p>
+                        <p style="" class="no-margin-p">Per _______________________
+                            <br/>(The signature here acknowledges only the  amount prepaid)</p>
+                    </div>
+                    <div class="info-right-body border-bottom-info">
+                        <p style="text-align: center; margin-top: 0;">Charges Advanced:</p>
+                        <br/>
+                    </div>
+                    <div style="clear: both;"></div>
+                    <div class="info-right-body border-bottom-info">
+                        <p style="margin-bottom: 0;">&nbsp;&nbsp;&nbsp; &dagger;The fibre boxes used for this shipment conform to the specifications set forth in the box makers certificate thereon, and all other requirements of Rule 41 of the ,Consolidated Freight Classification. </p>
+                        <p style="margin-bottom: 0;">&nbsp;&nbsp;&nbsp; &dagger;shipper;s imprint in lieu of stamp; not a part of bill of lading approved by the interstate Commerce Commission. </p>
+                        <br/>
+                    </div>
+                    <div class="info-right-body border-bottom-info">
+                        <p style="margin-bottom: 0;">
+                            &nbsp;&nbsp;&nbsp; •If the shipment moves between two ports by a carrier by water, the law requires that the bill of lading shall state whether it is "carrier's or shipper's weight."
+                        </p>
+                        <p style="margin-bottom: 0;">&nbsp;&nbsp;&nbsp; NOTE - Where the rate is dependent on value, whippers are required to state specifically in writing the agreed or declared value of the property. </p>
+                        <p style="margin-bottom: 0;">&nbsp;&nbsp;&nbsp; The agreed or declared value of the property is hereby specifically stated by the shipper to he not exceeding:</p>
+                        <br/>
+                        <hr class="info-hr" />
+                        <p class="no-margin-p" style="margin-top: 10px;">PER</p>
+                    </div>
+                    <div class="info-right-body border-bottom-info">
+                        <p class="no-margin-p" style="margin-top: 20px;">C.O.D.$</p>
+                    </div>
+                    <div class="info-right-body info-right-header">
+                        <h5 style="margin-bottom: 35px;">Merit Logistics</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

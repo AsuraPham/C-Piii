@@ -1,0 +1,61 @@
+﻿body {
+	background-color: transparent;
+}
+header {
+	.invoice-info {
+		
+		.bill-to-container {
+			width: 475px;
+		}
+	}
+}
+.work-items {
+	margin: 0px 0px 0px 60px;
+
+	table {				
+		tr {
+
+            td {
+                padding: inherit;
+            }
+
+			td, th {
+                width: 100px;
+            }
+
+            td.cl-wo, th.cl-wo {
+                width: 200px;
+            }
+
+            .right-align {
+                text-align: right;
+            }
+		}
+
+        tbody {
+            font-size: 11px;
+
+            .even td {
+                background-color: #F2F2F2;
+            }
+
+            .odd td {
+                background-color: white !important;
+            }
+        }
+
+		tfoot {
+			td {
+				font-weight: bold;
+			}
+		}
+
+        .first {
+            padding-top: 5px !important;
+        }
+
+        .last {
+            padding-bottom: 5px !important;
+        }
+	}
+}

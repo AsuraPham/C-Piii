@@ -1,0 +1,34 @@
++/ EF là một trình ánh xạ đối tượng- quan hệ(O/RM) cho phép các nhà phát triển .net làm việc 
+với csdl bằng cách sử dụng đối tượng.net. giúp loại bỏ sự cần thiết phổ biến của mã truy cập dữ liệu điểu các nhà phát triển luôn 
+luôn cần viết
++. Entity framework là mã nguồn mở ORM framework cho ứng dụng .net
++. Cho phép dev làm việc với dữ liệu bằng cách sử dụng đối tượng của các lớp cụ thể ko 
+tập trung vào csdl bên dưới nơi lưu trữ
++. EF các dev có thể làm việc ở mức trừu tượng cao hơn khi xử lý dữ liệu và tạo và duy trì
+các ứng dụng hướng đối tượng ít mã hơn\
++. Business layee <----Data layer EF------------>Database
+
++/ Đặc điểm của EF:
+    -, đa nền tảng: EF core chạy trên nhiều hệ điều hành
+    -, Mô hình hóa: tạo Entity Data Model dựa trên POCO(plain old clr obj) sd get/set
+    sử dụng mô hình này để truy vấn và lưu dữ liệu thực thể cho csdl bên dưới
+    -, Truy vấn: LINQ queries. Database provider sẽ dịch câu lệnh LINQ sang câu lệnh truy vấn của Sql,mysql...
+    sử dụng viết truy vấn sql trực tiếp được
+    -, Change Tracking : EF thay đổi thì Database cũng thay đổi theo
+    -, Saving: cung cấp insert, update, delete gọi hàm SaveChanges() hoặc SaveChangesAsync() để lưu
+    -, Concurrency
+    -, Transactions:
+    -, Caching
+    -, Built-in Conventions
+    -, Configuration
+    -, Migrations
+
++/ EF Works:
+    EF api: map classes to Database shcema->Translates LINQ-to-Entities queries to sql 
+    and excutes it(use data provider) -->> tracks Changes-->save Changes to Database
+
+
++/ Có 3 cách sử dụng EF:
+1. Database-First: tables(Database)===>>EF====>>Context and Entity classes (using EDM wizard integrated in Vs)
+2. Code-First: Domain classes and Context class ====>EF=====>>Database(using migration commands)
+3. Model-First: Design db Model on visual Designer==>>EF===>>db and context and Entity classes

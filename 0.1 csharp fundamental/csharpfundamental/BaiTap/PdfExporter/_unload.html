@@ -1,0 +1,117 @@
+@model Merit.Components.WorkOrders.Queries.Projections.UnloadingOverview
+
+<article class="footer">
+    <div class="content">
+        <img src="~/Content/Images/New_MeritLogo.png">
+        <table class="table table-head pull-right clearfix">
+            <tr>
+                <td colspan="4"><b class="h1">WO#: @Model.WoNumber</b></td>
+            </tr>
+            <tr>
+                <td><b>Dept:</b></td>
+                <td>@Model.DepartmentName</td>
+                <td class="text-right"><b>Start:</b></td>
+                <td>@Model.Start.GetValueOrDefault().ToShortTimeString()</td>
+            </tr>
+            <tr>
+                <td><b>Shift:</b></td>
+                <td>@Model.ShiftName</td>
+                <td class="text-right"><b>Finish:</b></td>
+                <td>@Model.Finish.GetValueOrDefault().ToShortTimeString()</td>
+            </tr>
+            <tr>
+                <td><b>Date:</b></td>
+                <td>@Model.Created.GetValueOrDefault().ToString("MM/dd/yyyy")</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+        <table class="table">
+            <tr>
+                <td><b>PO #:</b> @Model.PoNumber</td>
+                <td><b>Dock:</b> @Model.ProductNumber</td>
+                <td><b>Door #:</b> @Model.DoorNumber</td>
+                <td><b>Truck #:</b> @Model.TruckNumber</td>
+                <td><b>Trailer #:</b> @Model.TrailerNumber</td>
+            </tr>
+            <tr>
+                <td><b>Carrier:</b> @Model.CarrierName</td>
+                <td colspan="2"><b>Vendor:</b> @Model.VendorName</td>
+                <td colspan="2"><b>Dept Code:</b> @Model.DeptCodeNumber</td>
+            </tr>
+        </table>
+        <table class="table mb20">
+            <tr>
+                <td><b>Activity:</b> @Model.ActivityName</td>
+                <td><b>UoM:</b> @Model.UnitOfMeasure</td>
+                <td><b>Bill To:</b> @Model.BillTo</td>
+                <td><b>Pallet Type:</b> @Model.PalletType</td>
+            </tr>
+            <tr>
+                <td><b>Start Pallets:</b> @Model.StartPalletCount</td>
+                <td><b>End Pallets:</b> @Model.EndPalletCount</td>
+                <td><b>Cases:</b> @Model.CaseCount</td>
+                <td><b>Item/SKUs:</b> @Model.ItemCount</td>
+            </tr>
+            <tr>
+                <td><b>Special Instructions:</b> @Model.SpecialInstructions</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td><b>Base Charge:</b> @Model.UnloadingTotal.GetValueOrDefault().ToString("C")</td>
+            </tr>
+        </table>
+        <table class="table mb20">
+            @foreach (var charge in Model.AdditionalCharges)
+            {
+            <tr>
+                <td><b>Add'l Charge:</b> @charge.Name</td>
+                <td><b>Rate:</b> @charge.Rate.ToString("C")</td>
+                <td><b>Quantity:</b> @charge.Quantity</td>
+                <td><b>Price:</b> @charge.Price.ToString("C")</td>
+            </tr>
+                if (charge.RestackAuthorization != null)
+                {
+
+                <tr style="vertical-align:top;">
+                    <td style="padding-top: 0;"><b>Supervisor's Name:</b> @charge.RestackAuthorization.SupervisorName</td>
+                    <td style="padding-top: 0;"><b>Approver's Name:</b> @charge.RestackAuthorization.ApproverName</td>
+                    <td style="padding-top: 0;" colspan="2"><b>Approver's Signature:</b> <img src="@charge.RestackAuthorization.ApproverSignatureUrl" class="signature" /></td>
+                </tr>
+                }
+            }
+            <tr>
+                <td><b>Payment:</b> @Model.PaymentType</td>
+                <td><b>Check #:</b> @Model.ComCheckNumber</td>
+                <td><b>Authorization #:</b> @Model.PaymentAuthorizationCode</td>
+                <td><b>Service Charge:</b> @Model.ServiceCharge.GetValueOrDefault().ToString("C")</td>
+            </tr>
+            <tr>
+                <td><b>Driver Name:</b> @Model.DriverName</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td><b>Total WO Charge:</b> @Model.TotalBill.GetValueOrDefault().ToString("C")</td>
+            </tr>
+            <tr>
+                <td><b>Driver's Signature:</b> </td>
+                <td>&nbsp;</td>
+                <td><b>Supervisor's Signature:</b> </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td colspan="2"><img src="@Model.DriverSignatureUrl" class="signature"/></td>
+                <td colspan="2"><img src="@Model.SupervisorSignatureUrl" class="signature" /></td>
+            </tr>
+        </table>
+        <table class="table">
+            <tr>
+                <td><b>Assigned Associates:</b></td>
+            </tr>
+            @foreach (var worker in Model.WorkerAssignments)
+            {
+            <tr>
+                <td><span class="h2">@worker.LastName, @worker.FirstName @worker.MiddleName</span></td>
+            </tr>
+            }
+        </table>
+    </div>
+</article>

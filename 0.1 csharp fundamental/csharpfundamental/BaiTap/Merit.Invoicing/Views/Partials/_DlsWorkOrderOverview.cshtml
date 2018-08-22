@@ -1,0 +1,111 @@
+﻿@model Merit.Components.WorkOrders.Queries.Projections.DlsWorkOrderOverviewProjection
+
+<article class="footer">
+    <div class="content">
+        <img src="~/Content/Images/New_MeritLogo.png">
+        <table class="table table-head pull-right clearfix">
+            <tr>
+                <td colspan="4"><b class="h1">WO#: @Model.WorkOrderNumber</b></td>
+            </tr>
+            <tr>
+                <td><b>Dept:</b></td>
+                <td>@Model.DepartmentName</td>
+            </tr>
+            <tr>
+                <td><b>Shift:</b></td>
+                <td>@Model.ShiftName</td>
+            </tr>
+            <tr>
+                <td><b>Date:</b></td>
+                <td>@Model.Created.GetValueOrDefault().ToString("MM/dd/yyyy")</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+        <table class="table">
+            <tr>
+                <td><b>Truck #:</b> @Model.TruckNumber</td>
+                <td><b>Trailer #:</b> @Model.TrailerNumber</td>
+                <td><b>PO #:</b> @Model.PoNumber</td>
+                <td><b>Carrier:</b> @Model.CarrierName</td>
+            </tr>
+            <tr>
+                <td><b>Driver Name:</b> @Model.DriverName</td>
+                <td><b>Pickup Driver Cell #:</b> @Model.PickupCell</td>
+                <td><b>Apt. Begin:</b> @(@Model.AppointmentBeginTime.HasValue ? @Model.AppointmentBeginTime.Value.ToString("MM/dd/yyyy HH:mm") : "")</td>
+                <td><b>Apt. Ends:</b> @(@Model.AppointmentEndTime.HasValue ? @Model.AppointmentEndTime.Value.ToString("MM/dd/yyyy HH:mm") : "")</td>
+            </tr>
+            <tr>
+                <td><b>Vendor:</b> @Model.VendorName</td>
+                <td><b>Supplier Partner:</b> @Model.SupplierPartnerName</td>
+            </tr>
+            <tr>
+                <td><b>Dock:</b> @Model.ProductName</td>
+                <td><b>Door #:</b> @Model.DoorNumber</td>
+                <td><b>Number of Pallets:</b> @Model.NumberOfPallets</td>
+                <td><b>Number of Cases:</b> @Model.NumberOfCases</td>
+            </tr>
+            <tr>
+                <td><b>Gate In:</b> @(@Model.GateIn.HasValue ? @Model.GateIn.Value.ToString("MM/dd/yyyy HH:mm") : "")</td>
+                <td><b>Gate Out:</b> @(@Model.GateOut.HasValue ? @Model.GateOut.Value.ToString("MM/dd/yyyy HH:mm") : "")</td>
+                <td><b>Salvage Return In:</b> @(@Model.DlsReturnIn.HasValue ? @Model.DlsReturnIn.Value.ToString("MM/dd/yyyy HH:mm") : "")</td>
+                <td><b>Salvage Return Out:</b> @(@Model.DlsReturnOut.HasValue ? @Model.DlsReturnOut.Value.ToString("MM/dd/yyyy HH:mm") : "")</td>
+            </tr>
+        </table>
+        
+        <table class="table mb20">
+            <tr>
+                <td><b>Payment:</b> @Model.PaymentType</td>
+                <td><b>Check #:</b> @Model.PaymentInfo.CheckNumber</td>
+                <td><b>Authorization #:</b> @Model.PaymentAuthorizationCode</td>
+                <td><b>Service Charge:</b> @Model.PaymentServiceCharge.GetValueOrDefault().ToString("C")</td>
+            </tr>
+            <tr>
+                <td><b>Driver Name:</b> @Model.DriverName</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td><b>Total WO Charge:</b> @Model.WorkChargeTotal.GetValueOrDefault().ToString("C")</td>
+            </tr>
+        </table>
+
+        <table class="table mb20 with-border">
+            <thead class="table-head">
+                <tr>
+                    <th>Item</th>
+                    <th>Start</th>
+                    <th>Stop</th>
+                    <th>Qty</th>
+                    <th>Per Each</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var svc in Model.Services)
+                {
+                    <tr>
+                        <td>@svc.Item</td>
+                        <td>@(svc.Start.HasValue ? svc.Start.Value.ToString("MM/dd/yyyy HH:mm") : "")</td>
+                        <td>@(svc.Stop.HasValue ? svc.Stop.Value.ToString("MM/dd/yyyy HH:mm") : "")</td>
+                        <td>@svc.Quantity</td>
+                        <td>@svc.Rate.GetValueOrDefault().ToString("C")</td>
+                        <td>@svc.Charge.GetValueOrDefault().ToString("C")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <table class="table mb20">
+            <tr>
+                <td><b>Driver's Signature:</b> </td>
+                <td>&nbsp;</td>
+                <td><b>Supervisor's Signature:</b> </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td colspan="2"><img src="@Model.PaymentInfo.DriverSignatureUrl" class="signature" /></td>
+                <td colspan="2"><img src="@Model.PaymentInfo.SupervisorSignatureUrl" class="signature" /></td>
+            </tr>
+        </table>
+    </div>
+</article>
+

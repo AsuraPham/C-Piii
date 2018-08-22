@@ -1,0 +1,63 @@
+body
+{
+    width: 1056px;
+}
+
+.work-items {
+
+    .date {
+        width: 80px;
+    }
+
+    .work-order-number {
+        width: 170px;
+    }
+
+    .purchase-order-number {
+        width: 70px;
+    }
+
+    .trailer-number {
+        width: 80px;
+    }
+
+    .vendor {
+        width: 100px;
+    }
+
+    .carrier {
+        width: 80px;
+    }
+
+    .description {
+        width: 120px;
+    }
+
+    .stock-keeping-unit {
+        width: 70px;
+    }
+
+    .quantity {
+        width: 60px;
+    }
+
+    .unit-of-measure {
+        width: 60px;
+    }
+
+    .rate {
+        width: 80px;
+    }
+
+    .total {
+        width: 80px;
+    }
+}
+
+article.footer {
+    page-break-after: auto;
+
+    .content {
+        page-break-inside: avoid;
+    }
+}

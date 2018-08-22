@@ -1,0 +1,142 @@
+﻿@model Merit.Components.WorkOrders.Queries.Projections.UnloadingWorkOrderReceipt
+
+<div class="container"style="font-size:12px">
+    <div class="table">
+        <div class="row" style="margin-bottom: 0">
+            <div class="text-center">
+                <img src="~/Content/Images/New_MeritLogo.png">
+                @*<img class="logo text-center" src="/app/Content/images/logo.png">*@
+            </div>
+            <br />
+            <div class="col-xs-12 col-xs-offset-3 no-margin closeDiv">
+                <span><i class="fa fa-times centerAligned" ng-click="cancel()"></i></span>
+            </div>
+        </div>
+        <div class="row text-center bold">(949) 481-0685</div>
+        <div class="row text-center bold">WORK ORDER RECEIPT</div>
+        <div class="row text-center bold">@Model.ClientAddress</div>
+        <hr />
+        <div class="row">
+            <div class="col-xs-5 ">Tax Id</div>
+            <div class="col-xs-7 text-right">@Model.TaxId</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3 ">WO #</div>
+            <div class="col-xs-9 text-right">@Model.WorkOrderNumber</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4 ">DateTime</div>
+            <div class="col-xs-8 text-right">@Model.CreatedLocal</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-5 ">PO #</div>
+            <div class="col-xs-7 text-right">@Model.PoNumber</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-5 ">Truck #</div>
+            <div class="col-xs-7 text-right">@Model.TruckNumber</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-5 ">Trailer #</div>
+            <div class="col-xs-7 text-right">@Model.TrailerNumber</div>
+        </div>
+        @*<div class="row">
+            <div class="col-xs-5 ">Seal #</div>
+            <div class="col-xs-7 text-right">@Model.SealNumber</div>
+        </div>*@
+        <div class="row">
+            <div class="col-xs-5 ">Door #</div>
+            <div class="col-xs-7 text-right">@Model.DoorNumber</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-5 ">Client's Dept</div>
+            <div class="col-xs-7 text-right">@Model.ClientDepartment</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-5 ">Product</div>
+            <div class="col-xs-7 text-right">@Model.Product</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-5 ">Vendor</div>
+            <div class="col-xs-7 text-right">@Model.Vendor</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-5 ">Carrier</div>
+            <div class="col-xs-7 text-right">@Model.Carrier</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-5 ">Bill To</div>
+            <div class="col-xs-7 text-right">@Model.BillTo</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 ">QTY &lt; @Model.QuantityUom &gt;</div>
+            <div class="col-xs-6 text-right">@Model.Quantity</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-5 ">Activity</div>
+            <div class="col-xs-7 text-right">@string.Format("{0:c}", Model.Activity)</div>
+        </div>
+        @if (@Model.AdditionalCharges.Count() == 1)
+        {
+            <div class="row">
+                <div class="col-xs-5 ">Additional Charge </div>
+                <div class="col-xs-7 text-right">@string.Format("{0:c}", Model.AdditionalCharges[0].Price )</div>
+            </div>
+        }
+        else
+        {
+            for (int i = 0; i < @Model.AdditionalCharges.Count; i++)
+             {
+                 <div class="row">
+                     <div class="col-xs-5 ">Additional Charge @(i + 1)</div>
+                     <div class="col-xs-7 text-right">@string.Format("{0:c}", Model.AdditionalCharges[i].Price)</div>
+                 </div>
+             }       
+        }
+        <div class="row">
+            <div class="col-xs-7 ">Work Order Charge</div>
+            <div class="col-xs-5 text-right">@string.Format("{0:c}", @Model.WorkOrderCharge)</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-7 ">Service Charge</div>
+            <div class="col-xs-5 text-right">@string.Format("{0:c}", @Model.ServiceCharge)</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-5 ">Total</div>
+            <div class="col-xs-7 text-right">@string.Format("{0:c}", @Model.TotalAmount)</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-5 ">Payment</div>
+            <div class="col-xs-7 text-right">@Model.Payment</div>
+        </div>
+        <div class="row" hidden="@(Model.Payment != "Check")">
+            <div class="col-xs-5 ">Check #</div>
+            <div class="col-xs-7 text-right">@Model.CheckNumber</div>
+        </div>
+        <div class="row" hidden="@(Model.Authorization == "")">
+            <div class="col-xs-5 ">Authorization</div>
+            <div class="col-xs-7 text-right">@Model.Authorization</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-5 ">Driver</div>
+            <div class="col-xs-7 text-right">@Model.DriverName</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 ">Driver's Signature</div>
+            </div>
+        <div class="row">
+            <div class="col-xs-12 text-right"><img height="40" src="@Model.DriverSignatureUrl" /></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 ">Supervisor's Signature</div>
+            </div>
+        <div class="row">
+            <div class="col-xs-12 text-right"><img height="40" src="@Model.SupervisorSignatureUrl" /></div>
+        </div>
+        <hr />
+        <div class="row footer">
+            <div class="col-xs-5  ">@Model.ReceiptDate</div>
+            <div class="col-xs-7 text-right">www.meritlogistics.com</div>
+        </div>
+    </div>
+</div>

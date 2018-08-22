@@ -1,0 +1,29 @@
+﻿body {
+  background-color: transparent; }
+
+header .invoice-info .bill-to-container {
+  width: 475px; }
+
+.work-items {
+  margin: 0px 0px 0px 60px; }
+  .work-items table tr td {
+    padding: inherit; }
+  .work-items table tr td, .work-items table tr th {
+    width: 100px; }
+  .work-items table tr td.cl-wo, .work-items table tr th.cl-wo {
+    width: 200px; }
+  .work-items table tr .right-align {
+    text-align: right; }
+  .work-items table tbody {
+    font-size: 11px; }
+    .work-items table tbody .even td {
+      background-color: #F2F2F2; }
+    .work-items table tbody .odd td {
+      background-color: white !important; }
+  .work-items table tfoot td {
+    font-weight: bold; }
+  .work-items table .first {
+    padding-top: 5px !important; }
+  .work-items table .last {
+    padding-bottom: 5px !important; }
+

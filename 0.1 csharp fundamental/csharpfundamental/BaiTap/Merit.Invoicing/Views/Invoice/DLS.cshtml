@@ -1,0 +1,68 @@
+﻿@using Merit.Migrations
+@using OfficeOpenXml.FormulaParsing.Excel.Functions.Math
+@model Merit.Components.Invoices.Domain.ReportModel.DLS.DlsInvoiceModel
+@{
+    Layout = "~/Views/Layouts/InvoiceLayout.cshtml";
+}
+@section ExtraLinks {
+    <link href="~/Content/Css/DepartmentInvoice.css" rel="stylesheet" />
+}
+<section class="work-items">
+    @foreach (var activityGroup in Model.DailyActivities)
+    {
+        <div class="activity-group">
+            <h3>@Model.Invoice.DepartmentName, @activityGroup.First().ActivityType</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>Date</th>
+                        @foreach (var shift in activityGroup.First().Shifts)
+                        {
+                            <th>@shift.ShiftName</th>
+                        }
+                        <th>Total</th>
+                        <th>Rate</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ var dayCounter = 0; }
+                    @foreach (var day in activityGroup)
+                    {
+                        <tr class="@(dayCounter % 2 == 0 ? "even" : "odd")">
+                            <td>@day.Date.DayOfWeek.ToString("G")</td>
+                            <td>@day.Date.ToString("MM/dd/yyyy")</td>
+                            @foreach (var shift in day.Shifts)
+                            {
+                                <td>@shift.NumberOfUnits.ToString("N")</td>
+                            }
+                            <td>@day.TotalUnits.ToString("N")</td>
+                            <td>@day.Rate.ToString("C")</td>
+                            <td>@day.TotalAmount.ToString("C")</td>
+                        </tr>
+                        dayCounter++;
+                    }
+                </tbody>
+                <tfoot>
+                    <tr></tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td colspan="@(activityGroup.First().Shifts.Count)">Total</td>
+                        <td>@activityGroup.Sum(g => g.TotalUnits).ToString("N")</td>
+                        <td>&nbsp;</td>
+                        <td>@activityGroup.Sum(g => g.TotalAmount).ToString("C")</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    }
+    <div class="grand-totals">
+        <span>Grand Total:</span>
+        <span>@Model.TotalAmount.ToString("C")</span>
+        <br/>
+        <span>Payment Service Charges:</span>
+        <span>@Model.TotalPaymentServiceCharge.ToString("C")</span>
+    </div>
+</section>

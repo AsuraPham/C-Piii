@@ -1,0 +1,122 @@
+body
+{
+    margin: 0;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+		background-color: transparent;
+		letter-spacing: .03em;
+		webkit-letter-spacing: .03em;
+}
+
+.logo {
+    margin-left: 3px;
+    margin-bottom: 20px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.invoice-info {
+
+    .bill-to-container > div, 
+    .remit-to-container .column-1 > div,
+    .remit-to-container .column-2 > div {
+        padding: 4px 0px 3px;
+    }
+
+    .bill-to-container, .remit-to-container {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .bill-to-container {
+        width: 692px;
+
+        & > div {
+            margin-left: 3px;
+        }
+
+        .payment-due {
+            margin: 60px 0px 0px 60px;
+        }
+    }
+
+    .remit-to-container {
+
+        .orange {
+            font-weight: bold;
+            color: #FF9332;
+        }
+
+        .column-1, .column-2 {
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .column-1 {
+            width: 150px;
+        }
+
+        .column-2 {
+
+        }
+
+    }
+
+}
+
+.work-items {
+
+    h3 {
+        margin-left: 3px;
+        font-weight: bold;
+        color: #FF9332;
+        font-size: 16px;
+    }
+
+    table {
+        border-spacing: 0px;
+    }
+
+    th {
+        background-color: #80C8D8;
+        padding: 10px 0px;
+        font-weight: bold;
+    }
+
+    th, td {
+        text-align: left;
+
+        &:first-child {
+            padding-left: 5px;
+        }
+        &:last-child {
+            padding-right: 5px;
+        }
+    }
+
+    tbody {
+        font-size: 11px;
+
+        tr:nth-child(odd) td {
+            background-color: #F2F2F2;
+        }
+
+
+        td {
+            padding: 5px 0px;
+        }
+    } 
+
+    tfoot {
+        td {
+            padding: 20px 0px 30px;
+        }
+    }
+}
+.footer {page-break-after: always;}
+
+
+tr { page-break-inside: avoid; }
+

@@ -1,0 +1,44 @@
+﻿body {
+  width: 1056px; }
+
+.work-items .date {
+  width: 80px; }
+
+.work-items .work-order-number {
+  width: 170px; }
+
+.work-items .purchase-order-number {
+  width: 70px; }
+
+.work-items .trailer-number {
+  width: 80px; }
+
+.work-items .vendor {
+  width: 100px; }
+
+.work-items .carrier {
+  width: 80px; }
+
+.work-items .description {
+  width: 120px; }
+
+.work-items .stock-keeping-unit {
+  width: 70px; }
+
+.work-items .quantity {
+  width: 60px; }
+
+.work-items .unit-of-measure {
+  width: 60px; }
+
+.work-items .rate {
+  width: 80px; }
+
+.work-items .total {
+  width: 80px; }
+
+article.footer {
+  page-break-after: auto; }
+  article.footer .content {
+    page-break-inside: avoid; }
+

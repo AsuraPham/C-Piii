@@ -1,0 +1,91 @@
+﻿@model Merit.Components.WorkOrders.Queries.Projections.WarehouseServicePrintProjection
+<div class="woReceipt">
+    <div class="table">
+        <div class="row" style="margin-bottom: 0;">
+            <div class="col-xs-6 col-xs-offset-3">
+                <img class="logo center-block" src="/app/Content/images/logo.png">
+            </div>
+            <div class="col-xs-1 col-xs-offset-3 no-margin closeDiv">
+                <span><i class="fa fa-times centerAligned" ng-click="cancel()"></i></span>
+            </div>
+        </div>
+        <div class="row bold">(949) 481-0685</div>
+        <div class="row bold">WAREHOUSE SERVICE WORK ORDER RECEIPT</div>
+        <div class="row">@Model.ClientAddress</div>
+        <hr />
+        <div class="row">
+            <div class="col-xs-3 col-xs-offset-2 leftAligned">Tax Id</div>
+            <div class="col-xs-5 rightAligned">@Model.TaxId</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3 col-xs-offset-2 leftAligned">WO #</div>
+            <div class="col-xs-5 rightAligned">@Model.WorkOrderNumber</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3 col-xs-offset-2 leftAligned">Date Time</div>
+            <div class="col-xs-5 rightAligned">@Model.DateTime</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3 col-xs-offset-2 leftAligned">Shift</div>
+            <div class="col-xs-5 rightAligned">@Model.Shift</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3 col-xs-offset-2 leftAligned">Client</div>
+            <div class="col-xs-5 rightAligned">@Model.Client</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3 col-xs-offset-2 leftAligned">Vendor</div>
+            <div class="col-xs-5 rightAligned">@Model.Vendor</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3 col-xs-offset-2 leftAligned">Carrier</div>
+            <div class="col-xs-5 rightAligned">@Model.Carrier</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3 col-xs-offset-2 leftAligned">Bill To</div>
+            <div class="col-xs-5 rightAligned">@Model.BillTo</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3 col-xs-offset-2 leftAligned">Client's Dept</div>
+            <div class="col-xs-5 rightAligned">@Model.ClientDepartment</div>
+        </div>
+        @{
+            if (Model.Activity.Count() > 1)
+            {
+                var ii = 0;
+                foreach (var activity in Model.Activity)
+                {
+                    ii++;
+                    <div class="row">
+                        <div class="col-xs-3 col-xs-offset-2 leftAligned">Activity @ii</div>
+                        <div class="col-xs-5 rightAligned">@activity.ActivityLabel</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3 col-xs-offset-2 leftAligned">Rate</div>
+                        <div class="col-xs-5 rightAligned">@string.Format("{0:c}", @activity.Rate)</div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="row">
+                    <div class="col-xs-3 col-xs-offset-2 leftAligned">Activity </div>
+                    <div class="col-xs-5 rightAligned">@Model.Activity.SingleOrDefault().ActivityLabel</div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3 col-xs-offset-2 leftAligned">Rate</div>
+                    <div class="col-xs-5 rightAligned">@string.Format("{0:c}", @Model.Activity.SingleOrDefault().Rate)</div>
+                </div>
+            }
+        }
+        <div class="row">
+            <div class="col-xs-3 col-xs-offset-2 leftAligned">Total</div>
+            <div class="col-xs-5 rightAligned">@string.Format("{0:c}", @Model.TotalCharge)</div>
+        </div>
+        <hr />
+        <div class="row footer">
+            <div class="col-xs-3 col-xs-offset-1 leftAligned">@Model.ReceiptDate</div>
+            <div class="col-xs-3 col-xs-offset-4 rightAligned">www.meritlogistics.com</div>
+        </div>
+    </div>
+</div>

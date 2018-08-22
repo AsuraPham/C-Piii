@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Merit.Invoicing", "Merit.Invoicing.csproj", "{A754E9E8-2A6D-43A1-86B1-4764BBD68919}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestGetPdfByteStream", "..\TestGetPdfByteStream\TestGetPdfByteStream.csproj", "{F06EF58F-00A4-42DE-87CE-E14ED6E2320B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		ReleaseWowRackDevelopment|Any CPU = ReleaseWowRackDevelopment|Any CPU
+		ReleaseWowRackProduction|Any CPU = ReleaseWowRackProduction|Any CPU
+		ReleaseWowRackStaging|Any CPU = ReleaseWowRackStaging|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A754E9E8-2A6D-43A1-86B1-4764BBD68919}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A754E9E8-2A6D-43A1-86B1-4764BBD68919}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A754E9E8-2A6D-43A1-86B1-4764BBD68919}.Release|Any CPU.ActiveCfg = ReleaseWowRackStaging|Any CPU
+		{A754E9E8-2A6D-43A1-86B1-4764BBD68919}.Release|Any CPU.Build.0 = ReleaseWowRackStaging|Any CPU
+		{A754E9E8-2A6D-43A1-86B1-4764BBD68919}.ReleaseWowRackDevelopment|Any CPU.ActiveCfg = ReleaseWowRackDevelopment|Any CPU
+		{A754E9E8-2A6D-43A1-86B1-4764BBD68919}.ReleaseWowRackDevelopment|Any CPU.Build.0 = ReleaseWowRackDevelopment|Any CPU
+		{A754E9E8-2A6D-43A1-86B1-4764BBD68919}.ReleaseWowRackProduction|Any CPU.ActiveCfg = ReleaseWowRackProduction|Any CPU
+		{A754E9E8-2A6D-43A1-86B1-4764BBD68919}.ReleaseWowRackProduction|Any CPU.Build.0 = ReleaseWowRackProduction|Any CPU
+		{A754E9E8-2A6D-43A1-86B1-4764BBD68919}.ReleaseWowRackStaging|Any CPU.ActiveCfg = ReleaseWowRackStaging|Any CPU
+		{A754E9E8-2A6D-43A1-86B1-4764BBD68919}.ReleaseWowRackStaging|Any CPU.Build.0 = ReleaseWowRackStaging|Any CPU
+		{F06EF58F-00A4-42DE-87CE-E14ED6E2320B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F06EF58F-00A4-42DE-87CE-E14ED6E2320B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F06EF58F-00A4-42DE-87CE-E14ED6E2320B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F06EF58F-00A4-42DE-87CE-E14ED6E2320B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F06EF58F-00A4-42DE-87CE-E14ED6E2320B}.ReleaseWowRackDevelopment|Any CPU.ActiveCfg = Release|Any CPU
+		{F06EF58F-00A4-42DE-87CE-E14ED6E2320B}.ReleaseWowRackDevelopment|Any CPU.Build.0 = Release|Any CPU
+		{F06EF58F-00A4-42DE-87CE-E14ED6E2320B}.ReleaseWowRackProduction|Any CPU.ActiveCfg = Release|Any CPU
+		{F06EF58F-00A4-42DE-87CE-E14ED6E2320B}.ReleaseWowRackProduction|Any CPU.Build.0 = Release|Any CPU
+		{F06EF58F-00A4-42DE-87CE-E14ED6E2320B}.ReleaseWowRackStaging|Any CPU.ActiveCfg = Release|Any CPU
+		{F06EF58F-00A4-42DE-87CE-E14ED6E2320B}.ReleaseWowRackStaging|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5BFBD412-5BA6-4A52-B33A-A5C0B286092F}
+	EndGlobalSection
+EndGlobal

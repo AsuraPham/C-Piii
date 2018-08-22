@@ -1,0 +1,61 @@
+﻿@model Merit.Components.Invoices.Domain.ReportModel.Interfaces.IInvoiceReport
+
+<header>
+    <div class="logo">
+        <img src="~/Content/Images/New_MeritLogo.png" alt="Merit Logo" />
+    </div>
+    <section class="invoice-info">
+        <div class="bill-to-container">
+            <div class="bold">Bill To</div>
+            @if (String.IsNullOrEmpty(Model.HeaderInfo.ClientLocation))
+            {
+                <div>@Model.HeaderInfo.Client</div>
+            }
+            else
+            {
+                <div>@Model.HeaderInfo.Client - @Model.HeaderInfo.ClientLocation</div>
+            }
+            <div>
+                @if (!String.IsNullOrEmpty(Model.HeaderInfo.NameForReceipts))
+                {
+                    @:Attn: @Model.HeaderInfo.NameForReceipts
+                }
+                &nbsp;
+            </div>
+            <div>@Model.HeaderInfo.AddressLine1 &nbsp;</div>
+            <div>@Model.HeaderInfo.AddressLine2 &nbsp;</div>
+            <div>@Model.HeaderInfo.AddressLine3 &nbsp;</div>
+            <div class="payment-due bold">
+                @if (Model.HeaderInfo.DueDate.HasValue)
+                {
+                    @: Payment due on or before: @Model.HeaderInfo.DueDate.Value.ToString("MM/dd/yyyy")
+                }
+                &nbsp;
+            </div>
+        </div>
+        <div class="remit-to-container">
+            <div class="column-1">
+                <div class="remit-to orange">Please Remit to:</div>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <div>Invoice Number:</div>
+                <div>Invoice Date:</div>
+                <div>Invoice Amount: </div>
+                <div>Service Date:</div>
+                <div>Terms:</div>
+            </div>
+            <div class="column-2">
+                <div class="orange">Merit Integrated Logistics</div>
+                <div class="orange">@Model.HeaderInfo.InvoiceAddress1</div>
+                <div class="orange">@Model.HeaderInfo.InvoiceAddress2</div>
+                <div>&nbsp;</div>
+                <div class="bold">@Model.HeaderInfo.InvoiceNumber</div>
+                <div class="bold">@Model.HeaderInfo.InvoiceDate.Value.ToString("MM/dd/yyyy")</div>
+                <div class="bold">@Model.HeaderInfo.InvoiceAmount.ToString("C")</div>
+                <div class="bold">@Model.HeaderInfo.ServiceDateStart.Value.ToString("MM/dd/yyyy") to @Model.HeaderInfo.ServiceDateEnd.Value.ToString("MM/dd/yyyy")</div>
+                <div class="bold">@Model.HeaderInfo.InvoiceTerms</div>
+            </div>
+        </div>
+    </section>
+</header>

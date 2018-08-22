@@ -1,0 +1,23 @@
+﻿body {
+  width: 900px; }
+
+.work-items {
+  text-align: center; }
+  .work-items .table-wrapper {
+    text-align: left; }
+  .work-items table {
+    width: 100%; }
+    .work-items table .cl-type {
+      width: 80px; }
+    .work-items table .cl-name {
+      width: 285px; }
+    .work-items table .cl-hours {
+      width: 80px; }
+    .work-items table .cl-rate {
+      width: 80px; }
+    .work-items table .cl-total {
+      width: 90px; }
+
+.invoice-info .bill-to-container {
+  width: 500px; }
+

@@ -1,0 +1,71 @@
+﻿@model  Merit.Components.Invoices.Domain.ReportModel.Unloading.UnloadingInvoiceModel
+@{
+    Layout = "~/Views/Layouts/InvoiceLayout.cshtml";
+}
+
+@section ExtraLinks {
+    <link href="~/Content/Css/StandardUnloading.css" rel="stylesheet"/>
+    <link href="~/Content/Css/normalize.min.css" rel="stylesheet">
+    <link href="~/Content/Css/WorkOrder.css" rel="stylesheet">
+}
+<section class="work-items footer">
+    <h3>Unloading</h3>
+    <table>
+        <thead>
+            <tr>
+                <th class="date">Date</th>
+                <th class="work-order-number">WO #</th>
+                <th class="purchase-order-number">PO #</th>
+                <th class="trailer-number">Tralier #</th>
+                <th class="vendor">Vendor</th>
+                <th class="carrier">Carrier</th>
+                <th class="description">Description</th>
+                <th class="stock-keeping-unit">Item/SKU</th>
+                <th class="quantity">QTY</th>
+                <th class="units-of-measure">UoM</th>
+                <th class="rate">Rate</th>
+                <th class="total">Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var load in @Model.AllWorkOrdersByDate)
+            {
+                <tr>
+                    <td class="date">@load.LoadDate.ToString("MM/dd/yyyy")</td>
+                    <td class="work-order-number">@load.WorkOrderNumber</td>
+                    <td class="purchase-order-number">@load.PurchaseOrderNumber</td>
+                    <td class="trailer-number">@load.TrailerNumber</td>
+                    <td class="vendor">@load.Vendor</td>
+                    <td class="carrier">@load.Carrier</td>
+                    <td class="description">@load.Description</td>
+                    <td class="stock-keeping-unit">@load.StockKeepingUnit</td>
+                    <td class="quantity">@load.Quantity</td>
+                    <td class="unit-of-measure">@load.UnitOfMeasure</td>
+                    <td class="rate">@load.Rate.Value.ToString("C")</td>
+                    <td class="total">@load.TotalAmount.Value.ToString("C")</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td class="bold">Total</td>
+                <td class="bold">@Model.TotalAmount.ToString("C")<td>
+            </tr>
+        </tfoot>
+    </table>
+</section>
+
+@foreach (var load in @Model.AllWorkOrdersInfo)
+{
+    @Html.Partial("~/Views/Partials/_UnloadingWorkOrderOverview.cshtml", load)
+}
