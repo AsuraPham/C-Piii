@@ -1,0 +1,17 @@
+ASP.NET Web API là framework giúp tạo ra các Web api trên nền web
+web api là các dịch vụ web được xd dựa trên http sử dụng mô hình lập trình convention (như asp.net mvc)
+* Ưu điểm của Web Api:
++ Cấu hình đơn giản hơn so với WCF
++ Hiệu suất cao
++ hỗ trợ RESTful đầy đủ
++ hỗ trợ đầy đủ các tp mvc
++ mã nguồn mở
+
+
+REST viết tắt của REperesentational State Transfer được giới thiệu vào năm 2000 bởi Roy Fielding(đồng sáng lập giao thức http)
+- Là 1 kiểu kiến trúc lập trình , định nghĩa các quy tắc để thiết kế web service chú trọng vào tài nguyên 
+- Được định danh thông qua URI(Uniform Resoure Identifier) ví dụ: api.shop/order
+- Các method của http được sử dụng tương ứng với những hành động CRUD trên resource tương ứng
+Create-POST, Read-GET, Update-PUT/PATCH, Delete-DELETE
+RESTful là những ứng dụng mà có sử dụng kiến trúc REST
+
