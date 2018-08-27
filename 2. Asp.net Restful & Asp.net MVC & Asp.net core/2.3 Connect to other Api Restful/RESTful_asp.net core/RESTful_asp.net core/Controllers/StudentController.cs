@@ -34,23 +34,39 @@ namespace RESTful_asp_net_core.Controllers
 
         // POST api/<controller>
         [HttpPost]
-        public void Post([FromBody]Student student)
+        public bool Post([FromBody]Student student)
         {
-            _iRepo.Add(student);
+            if (_iRepo.Add(student) > 0)
+            {
+                return true;
+            }
+            else return false;
+
         }
 
         // PUT api/<controller>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]Student student)
+        public bool Put(int id, [FromBody]Student student)
         {
-            _iRepo.Update(student.StudentId, student);
+            if (_iRepo.Update(student.StudentId, student) > 0)
+            {
+                return true;
+            }
+            else
+                return false;
         }
 
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public bool Delete(int id)
         {
-            _iRepo.Delete(id);
+            if (_iRepo.Delete(id) > 0)
+            {
+                return true;
+            }
+            else
+                return false;
+           
         }
     }
 }
