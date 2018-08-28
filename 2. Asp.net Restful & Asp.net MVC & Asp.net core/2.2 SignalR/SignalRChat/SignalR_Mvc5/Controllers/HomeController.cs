@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.SignalR;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -28,6 +29,15 @@ namespace SignalR_Mvc5.Controllers
         }
         public ActionResult Chat()
         {
+            return View();
+        }
+
+        public ActionResult SendNow(string name,string message)
+        {
+            var context = GlobalHost.ConnectionManager.GetHubContext<ChatHub>();
+
+            context.Clients.All.addNewMessageToPage(string.IsNullOrEmpty(name) ?"Hello world": name, string.IsNullOrEmpty(message)?"kaka":message);
+
             return View();
         }
     }
