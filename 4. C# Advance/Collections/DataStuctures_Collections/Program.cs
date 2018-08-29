@@ -61,12 +61,25 @@ namespace DataStuctures_Collections
             iDic.Add(1, "ahaha");
             iDic.Add(2, "hahha");
             iDic.Add(new KeyValuePair<int, string>(22, "ahah"));
+           // Console.WriteLine(iDic[3].ToString()); //  Error
 
             
             foreach(var x in iDic)
             {
                 Console.WriteLine("{0},{1}",x.Key, x.Value);
             }
+
+
+            // Hashtable: tương tự Dictionary lưu trữ dưới dạng key-value, non-geneic
+            /* Nó tối ưu hóa tra cứu bằng cách tính toán mã băm của mỗi khóa và lưu trữ nó trong một nhóm khác nhau trong nội bộ 
+             * và sau đó khớp với mã băm của khóa được chỉ định tại thời điểm truy cập các giá trị.
+             * Hashtable : non-generic
+             * Dictionary: generic
+             * Nếu sử dụng bộ chỉ mục để trả vể giá trị HashTable sẽ thành công trả về null cho giá trị ko tồn tại 
+             * Trong khi đó Dictionary ném lỗi
+             */
+
+
             Console.ReadKey();
 
 
