@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -62,7 +63,6 @@ namespace DataStuctures_Collections
             iDic.Add(2, "hahha");
             iDic.Add(new KeyValuePair<int, string>(22, "ahah"));
            // Console.WriteLine(iDic[3].ToString()); //  Error
-
             
             foreach(var x in iDic)
             {
@@ -75,17 +75,63 @@ namespace DataStuctures_Collections
              * và sau đó khớp với mã băm của khóa được chỉ định tại thời điểm truy cập các giá trị.
              * Hashtable : non-generic
              * Dictionary: generic
-             * Nếu sử dụng bộ chỉ mục để trả vể giá trị HashTable sẽ thành công trả về null cho giá trị ko tồn tại 
-             * Trong khi đó Dictionary ném lỗi
+             * Nếu sử dụng bộ chỉ mục để trả vể giá trị HashTable sẽ thành công or trả về null cho giá trị ko tồn tại 
+             * Trong khi đó Dictionary ném lỗi 
              */
 
+            Hashtable hashTable = new Hashtable();
+            hashTable.Add(1, "hha");
+            hashTable.Add(3, null);
+            hashTable.Add("Bang", "jkkkk");
+            foreach(var x in hashTable.Keys)
+            {
+                Console.WriteLine("{0}-{1}", x, hashTable[x]);
+            }
+            //or
+            foreach(DictionaryEntry x in hashTable)
+            {
+                Console.WriteLine("{0}- {1}", x.Key, x.Value);
+            }
+            Console.WriteLine(hashTable[4]); // return null
 
+
+
+            // SortedList: Bộ sưu tập SortedList lưu trữ các cặp khóa-giá trị theo thứ tự tăng dần của khóa theo mặc định.
+            /* Lớp SortedList triển khai các giao diện ICictionary của IDictionary & do đó các phần tử có thể được truy cập cả bằng khóa và chỉ mục.
+             * SortedList: non-generic và generic
+             *  property:
+                Capacity: Gets or sets số lượng phần tử mà SortedList có thể lưu trữ
+                Cout: Lấy số lượng phần tử thực sự trong có trong SortedList
+                IsFixedSize: Cho biêt SortedList có kích thước cố định hay ko
+                IsReadOnly: SortedList có chỉ đọc ko
+                Item : Gets or Sets phần tử tại khóa được chỉ định
+                Keys: lấy danh sách khóa của SortedList
+                Values: lấy danh sách giá trị của SortedList
+
+                Method: 
+                Add(object key, object value)
+                Remove(object key)
+                RemoveAt(int index)
+                Contains(object key)
+                Clear();
+                GetByIndex(int index): trả về giá trị theo chỉ mục được lưu trữ trong mảng
+                GetKey(int index): trả về giá trị theo chỉ mục được lưu trữ
+                IndexOfKey(object key): trả về chỉ mục của khóa
+                IndexOfValue(object value): trả về chỉ mục của giá trị
+             */
+            SortedList sortedList = new SortedList();
+
+            sortedList.Add(12, "One");
+            sortedList.Add(14, "Two");
+            sortedList.Add(11, "Three");
+            //sortedList.Add("hah", "haha"); //Error
+            Console.WriteLine(sortedList.GetByIndex(2));
+            Console.WriteLine(sortedList[]);
+            foreach(var x in sortedList.Keys)
+            {
+                Console.WriteLine("{0}-{1}",x, sortedList[x]);
+            }
             Console.ReadKey();
-
-
-
-
-
         }
     }
 }
