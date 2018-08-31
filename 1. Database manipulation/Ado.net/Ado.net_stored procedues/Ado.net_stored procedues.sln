@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ado.net_stored_procedues", "Ado.net_stored procedues\Ado.net_stored_procedues.csproj", "{D050E279-11F0-47A8-A748-28CB43E3D6AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ado.net_stored_procedues", "Ado.net_stored procedues\Ado.net_stored_procedues.csproj", "{D050E279-11F0-47A8-A748-28CB43E3D6AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ado_mysql", "Ado_mysql\Ado_mysql.csproj", "{7479B445-EF86-4080-8658-9069976285A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{D050E279-11F0-47A8-A748-28CB43E3D6AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D050E279-11F0-47A8-A748-28CB43E3D6AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D050E279-11F0-47A8-A748-28CB43E3D6AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7479B445-EF86-4080-8658-9069976285A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7479B445-EF86-4080-8658-9069976285A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7479B445-EF86-4080-8658-9069976285A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7479B445-EF86-4080-8658-9069976285A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

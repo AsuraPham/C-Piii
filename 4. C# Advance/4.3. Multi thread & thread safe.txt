@@ -1,0 +1,16 @@
+1. Thế nào là một thread
+    Mỗi ứng dụng chạy với ít nhất một luồng
+    Một luồng như là  một tiến trình
+    Quá trình thực hiện bộ các bước tuần tự mỗi bước thực hiện một dòng mã.
+    Bởi vì các bước là tuần tự mỗi bước mất một lượng thời gian nhất định.  
+    Thời gian cần để hoàn thành một loạt các bước là tổng thời gian cần để thực hiện từng bước lập trình.
+2. Ứng dụng đa luồng
+    Các ứng dụng trước đây chạy đơn luồng, toàn bộ ứng dụng chỉ có một luồng
+    Điều này dẫn đến bạn không thể làm việc A cho đến khi hoàn thành việc B,nó làm việc tuần tự
+    Một ứng dụng đa luồng cho phép chạy một số luồng, mỗi luồng chạy một tiến trình riêng của nó
+    Các bước chạy đồng thời => tốc độ tốt, nhanh đi kèm với độ phức tạp phải giải quyết
+    Ví dụ: bước 1 chạy đồng thời với bước 2, mà b1 bằng cách nào đó phụ thuộc vào b2==> chương trình sẽ lỗi nếu bước 1 kết thúc trước bước 2 hoặc ngược lại
+3. Khi nào sd Thread
+    Ứng dụng đa luồng thường được sử dụng khi bạn muốn chương trình chạy hiệu quả hơn
+4. Thread safety
+    
