@@ -24,6 +24,7 @@ namespace Ado_mysql.Models
                 while (mySqlDataReader.Read())
                 {
                     StudentModel st = new StudentModel();
+                    st.Id = Convert.ToInt32(mySqlDataReader["Id"]);
                     st.Name = mySqlDataReader["Name"].ToString();
                     st.Date =Convert.ToDateTime(mySqlDataReader["Date"]);
                     st.Address = mySqlDataReader["Address"].ToString();
