@@ -50,7 +50,7 @@ namespace GoogleAuth
                 {
                     context.Response.Redirect("/account/login");
                     context.HandleResponse();
-                    return System.Threading.Tasks.Task.FromResult(0);
+                    return Task.FromResult(0);
 
                 };
             });

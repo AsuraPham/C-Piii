@@ -1,0 +1,27 @@
+Sự khác nhau giữa struct và class in .net
+Trong .net có hai kiểu là kiểu tham chiếu và kiểu tham trị
++/ struct là kiểu tham trị value types
+        không hỗ trợ kế thừa
+        được thông qua bởi các giá trị
+        không tham chiếu đến null (trừ khi sử dụng Nullable)
+        Không cấp bộ nhớ cho trường hợp mới trừ khi boxed
+
++/class là kiểu tham chiếu reference types
+        Hỗ trợ thừa kế
+        Có thể tham chiếu đến null
+        Cấp bộ nhớ cho trường hợp mới
+
++ Value types: Các biến kiểu tham trị lưu giữ trực tiếp dữ liệu của chúng và được cấp phát bộ nhớ trên
+Stack để lưu giá trị đó. kế thừa từ lớp system.valuetype
+Value types: byte, char, bool, sbyte, short, ushort, int, uint, float, double, decimal, long, ulong
+ngoài ra còn struct và enum
++ Reference type: kiểu dữ liệu này chứa địa chỉ vùng nhớ, nơi lưu giá trị thật của biến chứ ko 
+trực tiếp lưu giá trị của biến, tham chiếu tới 1 vùng nhớ được cấp phát trên bộ nhớ Heap
+Một số kiểu tham chiếu: object, string, class, delegate, interface, dynamic
+
+kiểu object là lớp cơ bản cho tất cả kiểu dữ liệu trong C#, có thể được gán giá trị của bất kì kiểu
+kiểu giá trị, kiểu tham chiếu, kiểu tự định nghĩa. trước khi gán giá trị cần có 1 sự chuyển đổi kiểu
+Khi một kiểu giá trị được chuyển thành object: được gọi là boxing
+Khi một kiểu object chuyển đổi thành kiểu giá trị: được gọi là unboxing
+
+
