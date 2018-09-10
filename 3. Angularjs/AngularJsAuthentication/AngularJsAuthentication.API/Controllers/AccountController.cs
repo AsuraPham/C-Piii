@@ -6,10 +6,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace AngularJsAuthentication.API.Controllers
 {
-
+    [EnableCors(origins: "http://localhost:50722", headers:"*", methods:"*")]
     [RoutePrefix("api/Accout")]
     public class AccountController : ApiController
     {

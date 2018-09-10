@@ -1,0 +1,11 @@
+CORS_Cross-Orgin Resource Sharing
+Để ngăn chặn các trang web giả mạo , các trình duyệt web thực hiện một biện pháp an ninh được gọi là
+same-Orgin policy(SOP). SOP cho phép các tài nguyên tương tác với các tài nguyên từ cùng 1 tên miền
+nhưng không tương tác được với các tài nguyên từ một tên miền khác
+CORS là một tiêu chuẩn để truy cập tài nguyên web trên các tên miền khác nhau
+
+Enable CORS in WebAPI:
+1. using JSONP
+https://www.c-sharpcorner.com/article/enable-cors-in-asp-net-webapi-2/
+2. using Microsoft.AspNet.WebApi.Cors
+https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/enabling-cross-origin-requests-in-web-api
