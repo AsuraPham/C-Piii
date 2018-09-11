@@ -88,7 +88,14 @@ namespace Queue_Stack
             {
                 Console.WriteLine(x);
             }
+            int[] nums = { 7, 6, 5, 4, 3, 2, 1 };
+            Console.WriteLine(kthLargestElement(nums, 2)); 
             Console.ReadKey();
+        }
+       static int kthLargestElement(int[] nums, int k)
+        {
+            Array.Sort(nums);
+            return nums[nums.Length - k];
         }
     }
 }
