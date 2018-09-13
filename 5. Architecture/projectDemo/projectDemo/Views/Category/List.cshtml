@@ -1,0 +1,18 @@
+﻿@using projectDemo.Data.Models
+@model IEnumerable<Category>;
+@{
+                ViewData["Title"] = "List";
+}
+
+<h2>List</h2>
+@{ 
+    foreach(var category in Model)
+    {
+        <div>
+            <h4>Name: @category.CategoryName</h4>
+            <h4>Description: @category.CategoryDescription</h4>
+        </div>
+
+    }
+}
+

@@ -1,0 +1,19 @@
+﻿@using projectDemo.Data.Models
+@model IEnumerable<Drink>;
+@{
+    ViewData["Title"] = "List";
+}
+
+<h2>List Drink</h2>
+@{ 
+    foreach(var drink in Model)
+    {
+        <div>
+            <h4>Name: @drink.Name</h4>
+            <h4>Price: @drink.Price</h4>
+        </div>
+
+    }
+}
+
+
